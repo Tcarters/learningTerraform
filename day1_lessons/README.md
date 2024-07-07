@@ -19,7 +19,13 @@ Get your hands dirty by installing Terraform on both MacOS, Linux and Windows. F
 
 I choose codespace environment for quick setup and usage. beow are the steps:
 
+- Add following extensions Aws, Terraform to the codespaces environment:
+![alt text](pic1.png)
+
+- Configuration for container running in codespace:
+
 ![alt text](image.png)
+
 
 
 #### Setting up Terraform for AWS
