@@ -2,7 +2,16 @@
 
 #### What is Terraform ?
 
-In this session, we'll introduce you to the fundamental concepts of Terraform and Infrastructure as Code (IaC). Learn why Terraform is crucial for managing infrastructure and how IaC streamlines provisioning.
+Terraform is a declarative coding tool that enables developers to use a high-level configuration language called HashiCorp Configuration Language (HCL) to describe the desired “end-state” cloud or on-premises infrastructure for running an application. It then generates a plan for reaching that end-state and runs the plan to provision the infrastructure.
+
+Infrastructure as code can help with the following:
+
+- Improve speed: Automation is faster than manually navigating an interface when you need to deploy or connect resources.
+
+- Improve reliability: If your infrastructure is large, it becomes easy to misconfigure a resource or provision services in the wrong order. With IaC, the resources are always provisioned and configured exactly as declared.
+
+- Prevent configuration drift: Configuration drift occurs when the configuration that provisioned your environment no longer matches the actual environment.
+
 
 #### Installing Terraform on MacOS, Linux and Windows
 
