@@ -1,6 +1,6 @@
 ## Day 1: Getting Started with Terraform
 
-#### What is Terraform ?
+### What is Terraform ?
 
 Terraform is a declarative coding tool that enables developers to use a high-level configuration language called HashiCorp Configuration Language (HCL) to describe the desired “end-state” cloud or on-premises infrastructure for running an application. It then generates a plan for reaching that end-state and runs the plan to provision the infrastructure.
 
@@ -13,9 +13,14 @@ Infrastructure as code can help with the following:
 - Prevent configuration drift: Configuration drift occurs when the configuration that provisioned your environment no longer matches the actual environment.
 
 
-#### Installing Terraform on MacOS, Linux and Windows
+### Installing Terraform on MacOS, Linux and Windows
 
-Get your hands dirty by installing Terraform on both MacOS, Linux and Windows. We'll guide you through the process with clear instructions and commands.
+Get your hands dirty by installing Terraform on both MacOS, Linux and Windows. Follow this page for installation proccess depending on your environnment https://developer.hashicorp.com/terraform/install?product_intent=terraform
+
+I choose codespace environment for quick setup and usage. beow are the steps:
+
+![alt text](image.png)
+
 
 #### Setting up Terraform for AWS
 
