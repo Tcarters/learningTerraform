@@ -1,0 +1,4 @@
+```bash
+terraform -install-autocomplete
+
+```
