@@ -1,5 +1,0 @@
-
-- A GCP Project: GCP organizes resources into projects.
-
-- Google Compute Engine: Enable the Google Compute Engine API for your project in the GCP console. Make sure to select the project you are using to follow this tutorial and click the "Enable" button.
-

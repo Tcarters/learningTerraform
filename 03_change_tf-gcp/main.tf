@@ -8,7 +8,10 @@ terraform {
 }
 
 provider "google" {
-  project = "qwiklabs-gcp-01-3c28a98c8e98"
+  project = "qwiklabs-gcp-00-6307b9e5b150"
+  region  = "us-west1"  # Ensure the region is set
+  zone    = "us-west1-a"  # Ensure the zone is set
+
 }
 
 resource "google_compute_network" "vpc_network" {
