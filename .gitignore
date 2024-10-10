@@ -2,3 +2,5 @@ garbage/
 
 day02_build_tf-gcp/.terraform/
 04_variables_tf-gcp/terraform.tfvars
+
+05_outputs_tf-gcp/terraform.tfvars
