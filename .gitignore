@@ -11,3 +11,8 @@ azure-and-terraform/01-ResourceGroup/.terraform/
 azure-and-terraform/01-ResourceGroup/terraform.tfvars
 azure-and-terraform/01-ResourceGroup/terraform.tfstate
 azure-and-terraform/01-ResourceGroup/terraform.tfstate.*
+
+azure-and-terraform/02-VirtualNet/.terraform
+azure-and-terraform/02-VirtualNet/terraform.tfvars
+azure-and-terraform/02-VirtualNet/terraform.tfstate
+azure-and-terraform/02-VirtualNet/terraform.tfstate.*
