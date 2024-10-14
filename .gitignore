@@ -16,3 +16,8 @@ azure-and-terraform/02-VirtualNet/.terraform
 azure-and-terraform/02-VirtualNet/terraform.tfvars
 azure-and-terraform/02-VirtualNet/terraform.tfstate
 azure-and-terraform/02-VirtualNet/terraform.tfstate.*
+
+azure-and-terraform/03-Subnets-Interpolation/.terraform
+azure-and-terraform/03-Subnets-Interpolation/terraform.tfvars
+azure-and-terraform/03-Subnets-Interpolation/terraform.tfstate
+azure-and-terraform/03-Subnets-Interpolation/terraform.tfstate.*
