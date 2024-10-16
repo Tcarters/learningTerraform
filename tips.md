@@ -24,3 +24,10 @@ terraform -install-autocomplete
 
 - Inspect state
     When you applied your configuration, Terraform wrote data into a file called ``terraform.tfstate``. Terraform stores the IDs and properties of the resources it manages in this file, so that it can update or destroy those resources going forward.
+
+
+### Tips cmd
+
+```sh
+    terraform apply -auto-approve ~> directly approve changes by skipping interaction
+```

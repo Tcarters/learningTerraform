@@ -4,3 +4,15 @@ gcp-and-terraform/02_build_tf-gcp/.terraform/
 gcp-and-terraform/04_variables_tf-gcp/terraform.tfvars
 
 05_outputs_tf-gcp/terraform.tfvars
+
+### Garbage az
+azure-and-terraform/01-ResourceGroup/.terraform/
+
+azure-and-terraform/01-ResourceGroup/terraform.tfvars
+azure-and-terraform/01-ResourceGroup/terraform.tfstate
+azure-and-terraform/01-ResourceGroup/terraform.tfstate.*
+
+azure-and-terraform/02-VirtualNet/.terraform
+azure-and-terraform/02-VirtualNet/terraform.tfvars
+azure-and-terraform/02-VirtualNet/terraform.tfstate
+azure-and-terraform/02-VirtualNet/terraform.tfstate.*
