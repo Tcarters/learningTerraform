@@ -26,3 +26,8 @@ azure-and-terraform/04-Using-locals-tf/.terraform
 azure-and-terraform/04-Using-locals-tf/terraform.tfvars
 azure-and-terraform/04-Using-locals-tf/terraform.tfstate
 azure-and-terraform/04-Using-locals-tf/terraform.tfstate.*
+
+azure-and-terraform/05-Backend-Az-Storage/.terraform
+azure-and-terraform/05-Backend-Az-Storage/terraform.tfvars
+azure-and-terraform/05-Backend-Az-Storage/terraform.tfstate
+azure-and-terraform/05-Backend-Az-Storage/terraform.tfstate.*
