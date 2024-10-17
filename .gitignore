@@ -35,3 +35,7 @@ azure-and-terraform/05-Backend-Az-Storage/terraform.tfstate.*
 azure-and-terraform/05-Backend-Az-Storage/linux-vm/terraform.tfvars
 azure-and-terraform/05-Backend-Az-Storage/linux-vm/.terraform
 azure-and-terraform/05-Backend-Az-Storage/linux-vm/ssh-key/id_rsa
+
+azure-and-terraform/06-Outputs-in-tf/terraform.tfvars
+azure-and-terraform/06-Outputs-in-tf/.terraform/
+azure-and-terraform/06-Outputs-in-tf/terraform.tfstate*
