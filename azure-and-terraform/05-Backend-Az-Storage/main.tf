@@ -4,7 +4,9 @@
 
 ### Step 1: Create a Resource Group
 ### Step 2: Create an Azure storage account
-### Step 3: Create an Azure storage account
+### Step 3: Configure azure backend to use our storage to store terraform states files.
+    ### Step 3.1 Means some outputs from storage account 
+
 
 terraform {
   required_providers {
@@ -21,10 +23,8 @@ provider "azurerm" {
 
     features {
 
-    }
-  
+    } 
 }
-
 
 resource "azurerm_resource_group" "rGrpname" {
     name = var.default_RGroup

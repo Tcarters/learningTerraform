@@ -1,11 +1,13 @@
 
 # 1. Defined local variables for Storage account creationg
 locals {
-  StorageName = "stgeaccountbackendtf01"
+  StorageName = var.StorageName #"stgeaccountbackendtf01"
   localisation = var.default_Location
   storageResourceGroup = var.default_RGroup
   type_account = "Standard"
   type_replication = "GRS"
+
+  containerName = var.containerN 
 }
 
 # 2. Create a Standard storage account with versioning enabled
@@ -28,7 +30,7 @@ resource "azurerm_storage_account" "storageAccountName" {
 
 # 3. Create a container inside Storage account
 resource "azurerm_storage_container" "container01" {
-  name                  = "container01-for-backend-tf"
+  name                  = local.containerName #"container01-for-backend-tf"
   storage_account_name  = azurerm_storage_account.storageAccountName.name
   container_access_type = "blob"
 }
