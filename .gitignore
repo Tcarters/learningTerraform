@@ -41,3 +41,6 @@ azure-and-terraform/06-Outputs-in-tf/.terraform/
 azure-and-terraform/06-Outputs-in-tf/terraform.tfstate*
 
 ..
+azure-and-terraform/07-data-source-tf/terraform.tfvars
+azure-and-terraform/07-data-source-tf/.terraform
+azure-and-terraform/07-data-source-tf/terraform.tfstate*
