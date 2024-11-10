@@ -3,13 +3,13 @@
 
 terraform {
 
-  cloud {
-    organization = "prod-tdmund-tf"
+  # cloud {
+  #   organization = "prod-tdmund-tf"
 
-    workspaces {
-      name = "learnTF-p1"
-    }
-  }
+  #   workspaces {
+  #     name = "learnTF-p1"
+  #   }
+  # }
 
   required_providers {
     aws = {
