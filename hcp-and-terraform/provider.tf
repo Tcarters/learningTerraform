@@ -7,7 +7,7 @@ terraform {
   #   organization = "prod-tdmund-tf"
 
   #   workspaces {
-  #     name = "learnTF-p1"
+  #     name = "hcp-and-terraform"
   #   }
   # }
 

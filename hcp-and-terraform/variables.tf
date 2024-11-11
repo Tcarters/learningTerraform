@@ -12,6 +12,6 @@ variable "instance_type" {
 }
 
 variable "instance_name" {
-  description = "vm-tf-OO1"  #"EC2 instance name"
+  description = "vm-nonprod-O1"  #"EC2 instance name"
   default     = "Provisioned by Terraform"
 }
