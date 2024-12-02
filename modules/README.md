@@ -17,6 +17,8 @@
 A Terraform module is a set of Terraform configuration files in a single directory. Even a simple configuration consisting of a single directory with one or more .tf files is a module
 
 
+### Structure for Terraform Module
+
 ```bash
 .
 ├── LICENSE
@@ -27,13 +29,22 @@ A Terraform module is a set of Terraform configuration files in a single directo
 
 ```
 
+### Calling modules
 
-- A module that is called by another configuration is sometimes referred to as a "child module" of that configuration.
+> Terraform commands will only directly use the configuration files in one directory, which is usually the current working directory. However, your configuration can use module blocks to call modules in other directories. When Terraform encounters a module block, it loads and processes that module's configuration files.
+
+
+A module that is called by another configuration is sometimes referred to as a "child module" of that configuration.
+
+
+### Local and remote modules
+
+Modules can either be loaded from the local filesystem, or a remote source. Terraform supports a variety of remote sources, including the Terraform Registry, most version control systems, HTTP URLs, and HCP Terraform or Terraform Enterprise private module registries.
 
 
 
+### 
 
-### Structure for Terraform Module
 
 ## Step 1: Notion 1
 
