@@ -43,7 +43,17 @@ Modules can either be loaded from the local filesystem, or a remote source. Terr
 
 
 
-### 
+### Module best practices
+
+1. Name your provider terraform-<PROVIDER>-<NAME>. You must follow this convention in order to publish to the HCP Terraform or Terraform Enterprise module registries.
+
+2. Start writing your configuration with modules in mind.
+
+3. Use local modules to organize and encapsulate your code. Even if you aren't using or publishing remote modules, organizing your configuration in terms of modules from the beginning will significantly reduce the burden of maintaining and updating your configuration as your infrastructure grows in complexity.
+
+4. Use the public Terraform Registry to find useful modules. This way you can more quickly and confidently implement your configuration by relying on the work of others to implement common infrastructure scenarios.
+
+5. Publish and share modules with your team. Most infrastructure is managed by a team of people, and modules are important way that teams can work together to create and maintain infrastructure. As mentioned earlier, you can publish modules either publicly or privately. Module users can reference published child modules in a root module, or deploy no-code ready modules through the HCP Terraform UI.
 
 
 ## Step 1: Notion 1
