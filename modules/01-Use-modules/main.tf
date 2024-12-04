@@ -38,6 +38,6 @@ module "ec2_instances" {
 
   tags = {
     owner                   = "undefined"
-    Environment             = "dev"
+    environment             = "dev"
   }
 }
