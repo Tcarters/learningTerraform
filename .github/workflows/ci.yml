@@ -1,0 +1,130 @@
+name: Get list of modified EE
+
+# Description:
+# 
+# This workflow run based on a "push" from branch development or feat/<feature-name>      #
+#   First, it checks for any changes made in "aap-azure" folder,                          #
+#   then it build the ee on the aap-azure-dev environment                                 #
+#   finally it open a pull request towards the production branch if                       #
+###########################################################################################
+
+ 
+
+on:
+  push:
+    branches: [ "feat/build-workflow" ]
+    paths:
+
+      - 'aap-azure/**/*' # Trigger the workflow for any changes under the aap-azure/ directory
+      - 'aap-onprem/**/*'
+      - 'config/**/*'
+      - '!aap-azure/**/CHANGELOG'  # Ignore this specific file
+      - '!aap-onprem/**/CHANGELOG'  # Ignore this specific file 
+
+  workflow_dispatch:
+
+ 
+
+jobs:
+
+  generate-matrix-ee:
+    runs-on: ['self-hosted', 'Linux', 'ephemeral']
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    outputs:
+      ischangedA: ${{ steps.change-in-aapazure.outputs.ischangedA }}
+      filecontent: ${{ steps.matrix.outputs.filecontent }}
+
+    steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+          with:
+            fetch-depth: 0  # Fetch all history so we can access HEAD~1
+       
+
+        - name: Set up python3
+          uses: actions/setup-python@v5
+ 
+
+        - name: Detect, get changed objects if in aap-azure
+          id: change-in-aapazure
+          run: |
+
+            PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
+            echo "Previous commit SHA: $PREVIOUS_COMMIT"
+            changed_folders=$(git diff --name-only $PREVIOUS_COMMIT HEAD | grep '^config/' | cut -d'/' -f2 | sort | uniq)
+            echo "List of changes ==> $changed_folders"
+         
+
+            if [ -n "$changed_folders" ]; then
+                echo "Yes ✅, The changed folder is: $changed_folders" # to be removed
+                # save the list in a file
+                echo $changed_folders > /tmp/modified-folders.txt;
+                echo "ischangedA=True" >> $GITHUB_OUTPUT;
+
+            else
+                echo "No ❌, There are no changed folders" # to be removed
+                echo "ischangedA=False" >> "$GITHUB_OUTPUT"
+            fi
+
+        - name: call the workflow
+          run : |
+
+            echo "1 Ref name ${{ github.ref_name }}"; echo "2Full ref ${{github.ref}}"
+            echo "tonton" > matrix.json
+
+            matrix_content=$(cat matrix.json)
+
+            gh workflow run reusable-workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
+    
+
+        # - name: Display list of changed files
+
+        #   if: ${{ steps.change-in-aapazure.outputs.ischangedA == 'True' }}
+
+        #   run: |
+        #     echo "display  content fo file"
+        #     pwd
+        #     ls -lha
+        #     cat /tmp/modified-folders.txt
+
+        # - name: Generate a matrix of modfiied ee to use.
+        #   id: matrix
+        #   if: ${{ steps.change-in-aapazure.outputs.ischangedA == 'True' }}
+        #   run: |
+        #     echo "Generate matrix of modified EE."
+        #     python3 ./.github/workflows/scripts/ee-generate-matrix.py /tmp/modified-folders.txt ./config/aap-azure/list-ee-azure.yml matrix.json
+        #     echo -e "########## \n"
+        #     echo "Content of Matrix generated \n"
+        #     echo "filecontent=$(cat matrix.json | base64 -w 0)" >> $GITHUB_ENV
+        
+
+        # - name: Upload artifact
+        #   if: ${{ steps.change-in-aapazure.outputs.ischangedA == 'True' }}
+        #   uses: actions/upload-artifact@v4
+        #   with:
+        #     name: matrixfile
+        #     path: ./matrix.json
+
+        
+        # - name: display internal
+        #   run : |
+        #     echo ${{ steps.matrix.outputs.filecontent }}
+
+
+        # - name: Trigger another workflow via API
+        #   run: |
+        #     # curl -X POST \
+        #     # -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        #     # -d '{"ref": ${{github.ref_name}}, matrix_path: matrix.json }' \
+        #     # "https://api.github.com/repos/afkl-airspace/automation-cc-aap-execution-environments/actions/workflows/reusable-general-build-ee.yml/dispatches"
+
+        #     curl -X POST \
+        #     -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        #     -H "Accept: application/vnd.github.v3+json" \
+        #     -d '{"ref": "${{ github.ref_name }}", "inputs": {"matrix_path": "matrix.json"}}' \
+        #     "https://api.github.com/repos/afkl-airspace/automation-cc-aap-execution-environments/actions/workflows/reusable-general-build-ee.yml/dispatches"
+
+ 
+
+ 

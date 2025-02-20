@@ -1,0 +1,32 @@
+name: Reusable v2 | Build Execution Environment
+
+on:
+  workflow_call:
+    inputs:
+      matrix_path:
+        required: true
+        type: string
+
+  #workflow_dispatch:
+
+
+jobs:
+
+  reusable-build-ee:
+    runs-on: ['self-hosted', 'acc']
+    #env:
+      #GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    strategy:
+        matrix:
+          item: ${{ fromJson( inputs.matrix_path ) }}
+
+    steps:
+
+      - name: Checkout source code
+        uses: actions/checkout@v4.1.0
+
+      - name: Display content
+
+        run: |
+
+          echo "I aml here"
