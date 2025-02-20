@@ -53,10 +53,10 @@ jobs:
             cat ./config/matrix.json
 
 
-        - name: Call the reusable workflow
-          uses: ./.github/workflows/reusable_workflow.yml
-          with:
-            matrix_path: ./config/matrix.json
+        # - name: Call the reusable workflow  # FAILED because it is interpreted as a composite actions
+        #   uses: ./.github/workflows/reusable_workflow.yml
+        #   with:
+        #     matrix_path: ./config/matrix.json
 
         - name: call the workflow
           run : |
