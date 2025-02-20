@@ -47,26 +47,16 @@ jobs:
           uses: actions/setup-python@v5
  
 
-        - name: Detect, get changed objects if in aap-azure
-          id: change-in-aapazure
+        - name: Create the matrix json file
           run: |
+            echo "DISPLAY MATRIX "
+            cat ./config/matrix.json
 
-            PREVIOUS_COMMIT=$(git rev-parse HEAD~1)
-            echo "Previous commit SHA: $PREVIOUS_COMMIT"
-            changed_folders=$(git diff --name-only $PREVIOUS_COMMIT HEAD | grep '^config/' | cut -d'/' -f2 | sort | uniq)
-            echo "List of changes ==> $changed_folders"
-         
 
-            if [ -n "$changed_folders" ]; then
-                echo "Yes ✅, The changed folder is: $changed_folders" # to be removed
-                # save the list in a file
-                echo $changed_folders > /tmp/modified-folders.txt;
-                echo "ischangedA=True" >> $GITHUB_OUTPUT;
-
-            else
-                echo "No ❌, There are no changed folders" # to be removed
-                echo "ischangedA=False" >> "$GITHUB_OUTPUT"
-            fi
+        - name: Call the reusable workflow
+          uses: ./.github/workflows/reusable_workflow.yml
+          with:
+            matrix_path: ./config/matrix.json
 
         - name: call the workflow
           run : |
@@ -74,7 +64,7 @@ jobs:
             echo "1 Ref name ${{ github.ref_name }}"; echo "2Full ref ${{github.ref}}"
             echo "tonton" > matrix.json
 
-            matrix_content=$(cat matrix.json)
+            matrix_content=$(cat ./config/matrix.json)
 
             gh workflow run reusable_workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
     

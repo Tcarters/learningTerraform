@@ -1,4 +1,4 @@
 products:
   - name: folderA 
     image: folderA-img1
-    path: ./config/
+    path: ./config/pathA
