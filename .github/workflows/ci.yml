@@ -17,7 +17,7 @@ on:
 
       - 'aap-azure/**/*' # Trigger the workflow for any changes under the aap-azure/ directory
       - 'aap-onprem/**/*'
-      - 'configs/**/*'
+      - 'config/**/*'
       - '!aap-azure/**/CHANGELOG'  # Ignore this specific file
       - '!aap-onprem/**/CHANGELOG'  # Ignore this specific file 
 
