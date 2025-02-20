@@ -76,7 +76,7 @@ jobs:
 
             matrix_content=$(cat matrix.json)
 
-            gh workflow run reusable-workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
+            gh workflow run reusable_workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
     
 
         # - name: Display list of changed files
