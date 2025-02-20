@@ -28,7 +28,8 @@ on:
 jobs:
 
   generate-matrix-ee:
-    runs-on: ['self-hosted', 'Linux', 'ephemeral']
+    runs-on: ubuntu-latest
+        # ['self-hosted', 'Linux', 'ephemeral']
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     outputs:
