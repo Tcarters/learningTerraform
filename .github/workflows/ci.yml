@@ -8,8 +8,6 @@ name: Get list of modified EE
 #   finally it open a pull request towards the production branch if                       #
 ###########################################################################################
 
- 
-
 on:
   push:
     branches: [ "feat/build-workflow" ]
@@ -42,10 +40,26 @@ jobs:
           with:
             fetch-depth: 0  # Fetch all history so we can access HEAD~1
        
-
         - name: Set up python3
           uses: actions/setup-python@v5
  
+        - name: Get list of modified files in last commit
+          id: modified_files
+          run: |
+            MODIFIED_FILES=$(git diff --name-only HEAD^ HEAD  | grep '^config/' )
+            echo "Modified Files:"
+            echo "$MODIFIED_FILES"
+            echo "files=$MODIFIED_FILES" >> $GITHUB_OUTPUT
+
+        - name: Save modified files list to a file
+          run: |
+           echo "${{ steps.modified_files.outputs.files }}" > modified_files_list.txt
+
+        # - name: Upload modified files list as artifact
+        #   uses: actions/upload-artifact@v3
+        #   with:
+        #     name: modified-files-list
+        #     path: modified_files_list.txt
 
         - name: Create the matrix json file
           run: |
@@ -58,15 +72,15 @@ jobs:
         #   with:
         #     matrix_path: ./config/matrix.json
 
-        - name: call the workflow
-          run : |
+        # - name: call the workflow
+        #   run : |
 
-            echo "1 Ref name ${{ github.ref_name }}"; echo "2Full ref ${{github.ref}}"
-            echo "tonton" > matrix.json
+        #     echo "1 Ref name ${{ github.ref_name }}"; echo "2Full ref ${{github.ref}}"
+        #     echo "tonton" > matrix.json
 
-            matrix_content=$(cat ./config/matrix.json)
+        #     matrix_content=$(cat ./config/matrix.json)
 
-            gh workflow run reusable_workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
+        #     gh workflow run reusable_workflow.yml --field matrix_path="${matrix_content}" --ref ${{github.ref_name }}
     
 
         # - name: Display list of changed files
@@ -101,21 +115,5 @@ jobs:
         # - name: display internal
         #   run : |
         #     echo ${{ steps.matrix.outputs.filecontent }}
-
-
-        # - name: Trigger another workflow via API
-        #   run: |
-        #     # curl -X POST \
-        #     # -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-        #     # -d '{"ref": ${{github.ref_name}}, matrix_path: matrix.json }' \
-        #     # "https://api.github.com/repos/afkl-airspace/automation-cc-aap-execution-environments/actions/workflows/reusable-general-build-ee.yml/dispatches"
-
-        #     curl -X POST \
-        #     -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-        #     -H "Accept: application/vnd.github.v3+json" \
-        #     -d '{"ref": "${{ github.ref_name }}", "inputs": {"matrix_path": "matrix.json"}}' \
-        #     "https://api.github.com/repos/afkl-airspace/automation-cc-aap-execution-environments/actions/workflows/reusable-general-build-ee.yml/dispatches"
-
- 
 
  
