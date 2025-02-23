@@ -53,7 +53,9 @@ jobs:
 
         - name: Save modified files list to a file
           run: |
-           echo "${{ steps.modified_files.outputs.files }}" > modified_files_list.txt
+                echo "${{ steps.modified_files.outputs.files }}" 
+                echo "${{ steps.modified_files.outputs.files }}" > modified_files_list.txt
+
 
         # - name: Upload modified files list as artifact
         #   uses: actions/upload-artifact@v3
